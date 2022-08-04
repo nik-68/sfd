@@ -64,7 +64,7 @@ def main(proxy, url):
 	clear()
 	logo()
 	if url == None:
-		url = input("URL: ")
+		url = input("URL ════> ")
 	if url[:4] != "http":
 		print(Fore.RED+"Enter the full URL (example: http*://****.**/)"+Style.RESET_ALL)
 		exit()
